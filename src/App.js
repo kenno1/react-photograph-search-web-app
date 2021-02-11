@@ -22,17 +22,36 @@ function App(){
     console.log("onSubmit pass.")
   }
 
-  return  (
+  return (
     <div className="App">
       <div className="main">
         <form onSubmit={onSubmit}>
           <input
-           type="text"
-           onChange={e => setText(e.target.value)}
-           value = {text}/>
-          <button type="submit">search</button>
+            type="text"
+            onChange={e => setText(e.target.value)}
+            value={text}
+          />
+          <button type="submit">
+            Search
+          </button>
         </form>
       </div>
+      <div className="container">
+        {
+          images.map(image => (
+            <div key={image.id} className="card">
+              <img src={image.urls.regular} className="card-img" alt=""/>
+              <div className="card-content">
+                <h1 className="card-title">
+                  {image.alt_description}
+                </h1>
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </div>
-  )
+  );
 }
+
+export default App;
