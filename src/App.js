@@ -14,9 +14,25 @@ function App(){
             setImages(data.results)
         })
   }, [query])
-  return  (
-    <div>
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setQuery(text);
+    setText('')
+    console.log("onSubmit pass.")
+  }
+
+  return  (
+    <div className="App">
+      <div className="main">
+        <form onSubmit={onSubmit}>
+          <input
+           type="text"
+           onChange={e => setText(e.target.value)}
+           value = {text}/>
+          <button type="submit">search</button>
+        </form>
+      </div>
     </div>
   )
 }
